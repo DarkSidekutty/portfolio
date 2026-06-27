@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Balamurugan | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- Reset & Base ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Beautiful gradient background */
+            background: linear-gradient(145deg, #dbeafe 0%, #ede9fe 100%);
+            color: #1e1e2f;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            /* Glass-morphism effect */
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 2.5rem 2.5rem 1.5rem;
+            transition: all 0.2s;
+        }
+
+        /* ---------- Scrollbar ---------- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #eef1f7;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a5b4fc;
+            border-radius: 10px;
+        }
+
+        /* ---------- Typography ---------- */
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+            color: #1e1b4b;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 48px;
+            height: 4px;
+            background: linear-gradient(135deg, #4f6ef7, #7c3aed);
+            border-radius: 4px;
+        }
+
+        /* ---------- Header / Hero ---------- */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2rem;
+            margin-bottom: 2rem;
+            /* Gradient background for hero */
+            background: linear-gradient(135deg, #ffffff, #eef2ff);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 20px rgba(79, 110, 247, 0.08);
+        }
+
+        .hero-left h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            background: linear-gradient(135deg, #1e1b4b, #4f6ef7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-left .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #eef3ff, #dbeafe);
+            color: #4f6ef7;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            margin-top: 0.3rem;
+            letter-spacing: 0.3px;
+            border: 1px solid rgba(79, 110, 247, 0.2);
+        }
+
+        .hero-left p {
+            font-size: 1.1rem;
+            color: #3f4057;
+            margin-top: 0.5rem;
+            max-width: 450px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: 0.25s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f6ef7, #7c3aed);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(79, 110, 247, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(79, 110, 247, 0.4);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.7);
+            color: #1e1e2f;
+            border-color: #c7d2fe;
+            backdrop-filter: blur(4px);
+        }
+        .btn-outline:hover {
+            background: #ffffff;
+            border-color: #4f6ef7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ---------- About ---------- */
+        .about-text {
+            font-size: 1.05rem;
+            color: #2d2e44;
+            max-width: 780px;
+            background: linear-gradient(135deg, #ffffff, #eef2ff);
+            padding: 1.4rem 2rem;
+            border-radius: 20px;
+            border-left: 5px solid #4f6ef7;
+            margin: 1.8rem 0 2.5rem;
+            box-shadow: 0 4px 12px rgba(79, 110, 247, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* ---------- Skills ---------- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 1.2rem 0 2.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #eef3ff, #e0e7ff);
+            color: #1f2a5c;
+            font-weight: 500;
+            padding: 0.45rem 1.6rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+        .skill-tag:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #c7d2fe, #a5b4fc);
+            border-color: #818cf8;
+            color: #1e1b4b;
+        }
+
+        /* ---------- Projects / Services / Education ---------- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 1.5rem 0 2.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 1.8rem 1.6rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(79, 110, 247, 0.12);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #c7d2fe;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: #16172b;
+        }
+
+        .card .sub {
+            color: #5b5d7a;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: #3b3d58;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-link {
+            color: #4f6ef7;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+        .card-link i {
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+        .card-link:hover {
+            color: #7c3aed;
+            border-bottom-color: #7c3aed;
+        }
+        .card-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* ---------- Education (single card) ---------- */
+        .edu-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            padding: 1.6rem 2rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1.2rem 0 2.5rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        .edu-card:hover {
+            border-color: #c7d2fe;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 12px 32px rgba(79, 110, 247, 0.08);
+        }
+        .edu-card .edu-left h3 {
+            font-size: 1.3rem;
+        }
+        .edu-card .edu-left .sub {
+            color: #5b5d7a;
+            font-size: 1rem;
+        }
+        .edu-card .edu-link {
+            color: #4f6ef7;
+            font-weight: 600;
+        }
+
+        /* ---------- Contact ---------- */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #ffffff, #eef2ff);
+            padding: 1.8rem 2.2rem;
+            border-radius: 28px;
+            margin: 1.2rem 0 2rem;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 16px rgba(79, 110, 247, 0.04);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #1e1e2f;
+            font-weight: 500;
+            font-size: 0.98rem;
+        }
+        .contact-item i {
+            color: #4f6ef7;
+            font-size: 1.2rem;
+            width: 1.8rem;
+            text-align: center;
+        }
+        .contact-item a {
+            color: #1e1e2f;
+            transition: 0.2s;
+            border-bottom: 1px dotted transparent;
+        }
+        .contact-item a:hover {
+            color: #7c3aed;
+            border-bottom-color: #7c3aed;
+        }
+
+        /* ---------- Footer ---------- */
+        .footer {
+            text-align: center;
+            margin-top: 2.8rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(199, 210, 254, 0.4);
+            color: #4b4d6b;
+            font-size: 0.95rem;
+        }
+        .footer i {
+            color: #ec4899;
+            margin: 0 4px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.5rem 1.2rem;
+                backdrop-filter: blur(8px);
+            }
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+            .hero-left h1 {
+                font-size: 2.2rem;
+            }
+            .contact-grid {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .edu-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-text {
+                padding: 1rem 1.2rem;
+                font-size: 0.98rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-left h1 {
+                font-size: 1.8rem;
+            }
+            .btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.85rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 1rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ===== HERO ===== -->
+        <header class="hero">
+            <div class="hero-left">
+                <h1>Balamurugan</h1>
+                <span class="badge"><i class="fas fa-code" style="margin-right:6px;"></i>Application Developer · Front-End</span>
+                <p>Passionate about building web, mobile, and AI-powered applications.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-folder-open" style="margin-right:8px;"></i>View Projects</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope" style="margin-right:8px;"></i>Contact Me</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- ===== ABOUT ===== -->
+        <section>
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                <i class="fas fa-quote-left" style="color:#4f6ef7; opacity:0.5; margin-right:10px;"></i>
+                I am a BE Computer Science and Engineering (CSE) student with a strong interest in
+                Software Development, Flutter Development, Web Development, and Artificial Intelligence.
+            </div>
+        </section>
+
+        <!-- ===== SKILLS ===== -->
+        <section>
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <span class="skill-tag"><i class="fab fa-html5" style="margin-right:6px;color:#e96228;"></i>HTML</span>
+                <span class="skill-tag"><i class="fab fa-java" style="margin-right:6px;color:#007396;"></i>Java</span>
+                <span class="skill-tag"><i class="fas fa-code" style="margin-right:6px;color:#2b6f9e;"></i>C Programming</span>
+                <span class="skill-tag"><i class="fab fa-flutter" style="margin-right:6px;color:#0468d7;"></i>Flutter</span>
+                <span class="skill-tag"><i class="fab fa-python" style="margin-right:6px;color:#306998;"></i>Python</span>
+                <span class="skill-tag"><i class="fas fa-database" style="margin-right:6px;color:#589636;"></i>MongoDB</span>
+            </div>
+        </section>
+
+        <!-- ===== PROJECTS ===== -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3><i class="fas fa-globe" style="color:#4f6ef7;margin-right:8px;"></i>Browser App</h3>
+                    <div class="sub">Custom browser application built using Flutter.</div>
+                    <a href="#" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-leaf" style="color:#4f6ef7;margin-right:8px;"></i>Agro AI</h3>
+                    <div class="sub">AI-powered crop disease detection and agriculture assistant.</div>
+                    <a href="#" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-play-circle" style="color:#4f6ef7;margin-right:8px;"></i>Media Player</h3>
+                    <div class="sub">Audio and video player application with user-friendly controls.</div>
+                    <a href="#" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== EDUCATION ===== -->
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="edu-card">
+                <div class="edu-left">
+                    <h3><i class="fas fa-graduation-cap" style="color:#4f6ef7;margin-right:10px;"></i>Bachelor of Engineering (BE)</h3>
+                    <div class="sub">Computer Science and Engineering (CSE)</div>
+                </div>
+                <a href="#" class="edu-link card-link">View Details <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES ===== -->
+        <section>
+            <h2 class="section-title">Services</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3><i class="fas fa-cubes" style="color:#4f6ef7;margin-right:8px;"></i>Application Development</h3>
+                    <p>Building efficient and scalable applications.</p>
+                    <a href="#" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-laptop-code" style="color:#4f6ef7;margin-right:8px;"></i>Front-End Development</h3>
+                    <p>Creating responsive and modern user interfaces.</p>
+                    <a href="#" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="card">
+                    <h3><i class="fab fa-android" style="color:#4f6ef7;margin-right:8px;"></i>Mobile App Development</h3>
+                    <p>Developing Android applications using Flutter.</p>
+                    <a href="#" class="card-link">View Details <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT ===== -->
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-grid">
+                <!-- Phone -->
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>6379745519</span>
+                </div>
+                <!-- Email -->
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:balamurugan63797455192006@gmail.com">balamurugan63797455192006@gmail.com</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            © 2026 Balamurugan &nbsp;·&nbsp; Designed with passion and creativity <i class="fas fa-heart"></i>
+        </footer>
+
+    </div>
+    <!-- end container -->
+</body>
+</html>
